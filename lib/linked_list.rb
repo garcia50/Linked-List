@@ -12,15 +12,20 @@ class LinkedList
 
   def append(data)
     node = Node.new(data)
-    @head = node
+    if @head == nil
+      @head = node
+    else
+      @head.next_node = node
+    end
     @count += 1
   end
 
   def to_string
-    "The #{@head.surname} family"
+    if count == 1
+      "The #{@head.surname} family"
+    elsif count > 1      
+      "The #{@head.surname} family, followed by the #{@head.next_node.surname} family"
+    end
   end
 
 end
-
-
-

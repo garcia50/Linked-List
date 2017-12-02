@@ -28,7 +28,7 @@ class LinkedListTest < Minitest::Test
     assert_nil list.head.next_node
   end
 
-  def test_the_count
+  def test_count_returns_1
     list.append("West")
     assert_equal 1, list.count
   end
@@ -38,27 +38,19 @@ class LinkedListTest < Minitest::Test
     assert_equal "The West family", list.to_string
   end
 
+  def test_count_returns_2_after_appending_new_name
+    list.append("West")
+    list.append("Hardy")
+    assert_equal 2, list.count
+  end
+
+  def test_to_string_returns_string
+    list.append("Rhodes")
+    list.append("Hardy")
+    assert_equal "The Rhodes family, followed by the Hardy family", list.to_string
+  end
+
 end
-
-
-# > require "./lib/linked_list"
-# > list = LinkedList.new
-# => <LinkedList @head=nil #45678904567>
-# > list.head
-# => nil
-# > list.append("West")
-# => <Node @surname="West" @next_node=nil #5678904567890>
-# > list
-# => <LinkedList @head=<Node @surname="West" ... > #45678904567>
-# > list.head.next_node
-# => nil
-# > list.count
-# => 1
-# > list.to_string
-# => "The West family"
-
-
-
 
 
 

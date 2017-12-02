@@ -18,7 +18,7 @@ class LinkedListTest < Minitest::Test
     assert_nil list.head
   end
 
-  def test_append_method_adds_to_list
+  def test_user_can_append_and_add_to_empty_list
     list.append("West")
     assert_equal "West", list.head.surname
   end
@@ -50,7 +50,77 @@ class LinkedListTest < Minitest::Test
     assert_equal "The Rhodes family, followed by the Hardy family", list.to_string
   end
 
+  def test_user_can_prepend_data_to_existing_list
+    list.append("Brooks")
+    list.append("Henderson")
+    list.prepend("McKinney")
+    assert_equal "The McKinney family, followed by the Brooks family, followed by the Henderson family", list.to_string
+    assert_equal 3, list.count
+  end
 end
+
+#Iteration3
+# > require "./lib/linked_list"
+# > list = LinkedList.new
+# > list.append("Brooks")
+# => <Node @surname="Brooks" @next_node=nil #5678904567890>
+# > list.to_string
+# => "The Brooks family"
+# > list.append("Henderson")
+# => <Node @surname="Henderson" @next_node=nil #5678904567890>
+# > list.prepend("McKinney")
+# => <Node @surname="McKinney" @next_node=<Node @surname="Brooks" ... > #5678904567890>
+# > list.to_string
+# => "The McKinney family, followed by the Brooks family, followed by the Henderson family"
+# > list.count
+# => 3
+# > list.insert(1, "Lawson")
+# => <Node @surname="Lawson" @next_node=<Node @surname="Brooks" ... > #5678904567890>
+# > list.to_string
+# => "The McKinney family, followed by the Lawson family, 
+#     followed by the Brooks family, followed by the Henderson family"
+
+#Iteration2
+# > require "./lib/linked_list"
+# > list = LinkedList.new
+# => <LinkedList @head=nil #45678904567>
+# > list.head
+# => nil
+# > list.append("Rhodes")
+# => => <Node @surname="Rhodes" @next_node=nil #5678904567890>
+# > list
+# => <LinkedList @head=<Node @surname="Rhodes" ... > #45678904567>
+# > list.head
+# => <Node @surname="Rhodes" @next_node=nil #5678904567890>
+# > list.head.next_node
+# => nil
+# > list.append("Hardy")
+# => => <Node @surname="Hardy" @next_node=nil #5678904567890>
+# > list.head.next_node
+# => <Node @surname="Hardy" @next_node=nil #5678904567890>
+# > list.count
+# => 2
+# > list.to_string
+# => "The Rhodes family, followed by the Hardy family"
+
+
+
+#Iteration 1
+# > require "./lib/linked_list"
+# > list = LinkedList.new
+# => <LinkedList @head=nil #45678904567>
+# > list.head
+# => nil
+# > list.append("West")
+# => <Node @surname="West" @next_node=nil #5678904567890>
+# > list
+# => <LinkedList @head=<Node @surname="West" ... > #45678904567>
+# > list.head.next_node
+# => nil
+# > list.count
+# => 1
+# > list.to_string
+# => "The West family"
 
 
 

@@ -28,15 +28,13 @@ class LinkedList
   end
 
   def to_string
-    if count == 1
-      "The #{@head.surname} family"
-    elsif count == 2      
-      "The #{@head.surname} family, followed by the #{@head.next_node.surname} family"
-    elsif count == 3
-      "The #{@head.surname} family, followed by the #{@head.next_node.surname} family, followed by the #{@head.next_node.next_node.surname} family"
-    elsif count == 4
-      "The #{@head.surname} family, followed by the #{@head.next_node.surname} family, followed by the #{@head.next_node.next_node.surname} family, followed by the #{@head.next_node.next_node.next_node.surname} family"
+    family_list = "The #{@head.surname} family"
+    current_node = @head.next_node
+    until current_node == nil do
+      family_list << (", followed by the #{current_node.surname} family")
+      current_node = current_node.next_node
     end
+    family_list
   end
 
   def prepend(data)

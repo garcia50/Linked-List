@@ -68,6 +68,25 @@ class LinkedListTest < Minitest::Test
     actual = "The McKinney family, followed by the Lawson family, followed by the Brooks family, followed by the Henderson family" 
     assert_equal actual, list.to_string
   end
+
+  def test_user_finds_and_returns_given_element
+    list.append("McKinney")
+    list.append("Lawson")
+    list.append("Brooks")
+    list.append("Henderson")
+
+    assert_equal "The Brooks family", list.find(2, 1)
+  end
+
+  def test_user_finds_and_returns_given_element
+    list.append("McKinney")
+    list.append("Lawson")
+    list.append("Brooks")
+    list.append("Henderson")
+    actual = "The Lawson family, followed by the Brooks family, followed by the Henderson family"
+    assert_equal actual, list.find(1, 3)
+  end
+
 end
 
 

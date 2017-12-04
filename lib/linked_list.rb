@@ -55,8 +55,24 @@ class LinkedList
       insert(position, data, h.next_node, recursion_count)
     end
   end
-end
 
+  def find(position, family_count, h = head, recursion_count = 0)
+    position_count = 0
+    @current_node = @head
+    until position_count == position do
+      @current_node = @head.next_node
+      position_count += 1
+    end
+    fam_list = "The #{@current_node.surname} family"
+    until recursion_count == family_count - 1 do
+      @current_node = @current_node.next_node
+      fam_list << (", followed by the #{@current_node.surname} family")
+      recursion_count += 1
+    end
+    fam_list
+  end
+
+end
 
 
 
